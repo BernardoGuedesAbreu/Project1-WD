@@ -12,7 +12,7 @@ const player = new Player(500,500,100,100,ctx)
 //start button on Click
 startButton.onclick= function(){
     console.log("starting");
-    const game = new Game(ctx,canvas.width,canvas.height,player);
+    const game = new Game(ctx,canvas,canvas.width,canvas.height,player);
     game.start();
 }
 
