@@ -66,6 +66,6 @@ class Game {
         )
       );
     }
-  }*/
+  }
 }
 console.log("game JS is loaded");

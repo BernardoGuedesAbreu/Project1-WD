@@ -1,0 +1,20 @@
+#start {
+  width: 100px;
+  height: 100px;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#BarraDeStart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas {
+  border-style: dotted; /*só para me orientar na tela*/
+}
