@@ -3,11 +3,7 @@
   height: 100px;
 }
 
-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+
 
 #BarraDeStart {
   display: flex;
@@ -18,17 +14,17 @@ body {
 #scrolling-background {
   z-index: -50;
   position: absolute;
-  background:url(/img/scrolling-background.jpg)  repeat-x;
+  background:url(/img/scrolling-background.jpg)  repeat-x;  /*making the background infinite */
   height: 100vh;
-  width: 3840px;
-  animation: slide 25s linear infinite;
+  width: 3840px;   /* give it enough width that the loop works */
+  animation: slide 30s linear infinite;   /*find a good loop interval that works well */
 }
 @keyframes slide {
   0% {
-      transform: translate(0);
+      transform: translate(0);    /* at moment zero of the animation process, do nothing */
     }
     100% {
-      transform: translate(-1920px); /* The image width * 2 */
+      transform: translate(-2560px);  /* at moment 100% of the animation process, move img to the left 2560px */
     }
 }
 
@@ -47,6 +43,25 @@ body {
   border-radius: 50px;
   margin-right: 80px !important;
   border-color: antiquewhite;
-  background-image: url(/img/backgroung-canvas.png);
-  background-size: cover;
+  background-image: url(/img/background-canvas.jpg);
+  background-size:auto;
+}
+
+#middle-section {
+  display: flex;
+  height: 70vh;
+  width: 100vw;
+  justify-content: space-evenly;
+  padding-right: 0px;
+}
+
+#title-div h1 { 
+  padding-top: 8vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 8vh;   
+  text-align: center;
+  font-size: 4vw;
+  display: flex;
+  justify-content: center;
 }

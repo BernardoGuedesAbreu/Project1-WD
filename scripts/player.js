@@ -1,10 +1,11 @@
 class Player {
-  constructor(x, y, w, h, ctx) {
+  constructor(x, y, w, h, ctx, img) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.ctx = ctx;
+    this.img = img;
     this.speedX = 0;
     this.speedY = 0;
   }
@@ -14,9 +15,10 @@ class Player {
   useAbility() {} //ability function
 
   draw() {
-    ctx.fillStyle = "blue";
-    ctx.fillRect(this.x, this.y, this.w, this.h);
-  }
+    const playerImg = new Image();
+    playerImg.src = this.img;
+    this.ctx.drawImage(playerImg, this.dx, this.dy, 40, 50, this.x, this.y, 50, 75);
+    }
 
   newPos() {
     this.x += this.speedX;
