@@ -20,7 +20,9 @@ class Game {
     this.player.newPos();
     this.player.draw();
     this.updateEnemies();
-    //this.checkGameOver();
+    for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
+      this.enemies[i].newPos();         
+      } 
   };
 
   //stops the game
@@ -34,6 +36,9 @@ class Game {
 
   
   updateEnemies() {
+
+    for(let i = 0; i < this.enemies.length; i++){
+      this.enemies[i].draw();  } 
     //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
