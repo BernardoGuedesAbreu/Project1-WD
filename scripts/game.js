@@ -26,6 +26,7 @@ class Game {
       //for loop to update all enemies position in the array
       this.enemies[i].newPos();
     }
+    this.checkGameOver();
     console.log(this.bullets.length);
     console.log(this.enemies.length);
   };
@@ -101,7 +102,10 @@ class Game {
     const crashed = this.enemies.some((enemy) => {
       return this.player.crashWith(enemy);
     });
+
+    if(crashed){
     this.stop();
   }
+}
 }
 console.log("game JS is loaded");
