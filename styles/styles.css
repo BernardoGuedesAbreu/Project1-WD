@@ -24,7 +24,7 @@
       transform: translate(0);    /* at moment zero of the animation process, do nothing */
     }
     100% {
-      transform: translate(-2560px);  /* at moment 100% of the animation process, move img to the left 2560px */
+      transform: translate(-1920px);  /* at moment 100% of the animation process, move img to the left 2560px */
     }
 }
 
