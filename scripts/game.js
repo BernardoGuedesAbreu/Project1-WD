@@ -20,13 +20,14 @@ class Game {
     this.clear();
     this.player.newPos();
     this.player.draw();
-    this.shoot();
     this.updateShoot();
     this.updateEnemies();
     for (let i = 0; i < this.enemies.length; i++) {
       //for loop to update all enemies position in the array
       this.enemies[i].newPos();
     }
+    console.log(this.bullets.length);
+    console.log(this.enemies.length);
   };
 
   //stops the game
@@ -77,23 +78,22 @@ class Game {
   }
 
   shoot() {
-    document.addEventListener("keydown", (e) => {
-      switch (e.code) {
-        case "Space":
-          let x = this.player.x + this.player.w;
-          let y = this.player.y + this.player.h / 2;  
-          const bullet = new Bullet(x, y, 100, 100, ctx);
-          console.log(bullet);
-          this.bullets.push(bullet);
-      }
-    });
+    let x = this.player.x + this.player.w;
+    let y = this.player.y + this.player.h / 2;
+    const bullet = new Bullet(x, y, 100, 100, ctx, lastKeyPress);
+    console.log(bullet);
+    this.bullets.push(bullet);
   }
 
   updateShoot() {
     for (let i = 0; i < this.bullets.length; i++) {
-      this.bullets[i].x += 3;
+      this.bullets[i].direction();
       this.bullets[i].newPos();
       this.bullets[i].draw();
+
+      if (this.bullets[i].x > this.width) {
+        this.bullets.splice(i, 1);
+      }
     }
   }
 }
