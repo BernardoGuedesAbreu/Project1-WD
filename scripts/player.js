@@ -20,6 +20,11 @@ class Player {
     }
 
   newPos() {
+
+    if(this.x <= 0)this.x = 1;
+    if(this.x >= canvas.width - this.w) this.x = canvas.width - this.w;
+    if(this.y <= 0)this.y = 1;
+    if(this.y >= canvas.height - this.h)this.y = canvas.height - this.h; 
     this.x += this.speedX;
     this.y += this.speedY;
   }
@@ -40,21 +45,6 @@ class Player {
     return this.x + this.w;
   }
 }
-//creating projectile class for our attack
-class Projectile {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.velocity = 10; //test to check what feels good
-    this.direction = { x: 0, y: 0 };
-    this.damage = 10;
-  }
 
-  move() {
-    // code to move the projectile based on its velocity and direction
-    this.x += this.velocity * this.direction.x;
-    this.y += this.velocity * this.direction.y;
-  }
-}
 
 console.log("player JS is loaded");
