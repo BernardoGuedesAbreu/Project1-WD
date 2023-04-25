@@ -4,8 +4,8 @@ const ctx = canvas.getContext("2d");
 const startButton = document.getElementById("start");
 
 //creating our player
-let playerImg = "/img/player.png"
-const player = new Player(600, 300, 50, 50, ctx, playerImg);
+
+const player = new Player(600, 300, 250, 250, ctx);
 
 //start button on Click
 startButton.onclick = function () {
