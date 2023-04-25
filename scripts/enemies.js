@@ -37,8 +37,8 @@ class Enemy {
       enemyImg,
       this.dx,
       this.dy,
-      40,
-      50,
+      this.width,
+      this.height,
       this.x,
       this.y,
       50,
@@ -57,7 +57,7 @@ class Enemy {
       this.movRight = true;
     }
 
-    if (player.y < this.y) this.y -= 1;
+    if (player.y+75< this.y) this.y -= 1;
     else this.y += 1;
 
     if (player.x == this.x) {

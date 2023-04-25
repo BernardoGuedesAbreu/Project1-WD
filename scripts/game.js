@@ -44,7 +44,16 @@ class Game {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-    //spawn aleatório  de inimigos:
+/*     const crashed = this.bullet.some((enemy) => {
+      return bullet.crashWithEnemy(enemy);
+     });
+     if(crashed){
+       this.enemies.splice(i,1)
+     }  */
+
+
+
+       //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
     let randomArray = [
@@ -56,7 +65,7 @@ class Game {
 
     let randomIndex = Math.floor(Math.random() * randomArray.length);
     let spritesArray = ["img/3.png", "img/4.jpg", "img/5.png"];
-    let randomSprite = Math.floor(Math.random() * spritesArray.length);
+    let randomSprite = Math.floor(Math.random() * (spritesArray.length - 1));
 
     if (this.frames % 300 === 0) {
       //criação de enemies após x tempo
@@ -76,6 +85,21 @@ class Game {
         )
       );
     }
+
+
+    for (let i =0;i < this.bullets.length; i++) {
+
+      for (let j =0;j < this.enemies.length; j++) {
+      
+    if (this.bullets[i].crashWith(this.enemies[j])){
+      this.bullets.splice(i,1)
+      this.enemies.splice(j,1)
+    }
+    
+      }
+    
+    }
+
   }
 
   shoot() {

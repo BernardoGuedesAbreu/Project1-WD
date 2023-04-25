@@ -46,4 +46,13 @@ class Bullet {
   right() {
     return this.x + this.w;
   }
+
+  crashWith(enemy) {
+    return !(
+      this.bottom() < enemy.top() ||
+      this.top() > enemy.bottom() || 
+      this.right() < enemy.left() ||
+      this.left() > enemy.right()
+    );
+  }
 }
