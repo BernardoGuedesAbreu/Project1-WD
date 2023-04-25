@@ -18,9 +18,9 @@ class Game {
   update = () => {
     this.frames++;
     this.clear();
+    this.updateShoot();
     this.player.newPos();
     this.player.draw();
-    this.updateShoot();
     this.updateEnemies();
     for (let i = 0; i < this.enemies.length; i++) {
       //for loop to update all enemies position in the array
@@ -78,9 +78,9 @@ class Game {
   }
 
   shoot() {
-    let x = this.player.x + this.player.w;
+    let x = this.player.x + this.player.w / 2;
     let y = this.player.y + this.player.h / 2;
-    const bullet = new Bullet(x, y, 100, 100, ctx, lastKeyPress);
+    const bullet = new Bullet(x, y, 50, 50, ctx, lastKeyPress);
     console.log(bullet);
     this.bullets.push(bullet);
   }
@@ -95,6 +95,13 @@ class Game {
         this.bullets.splice(i, 1);
       }
     }
+  }
+
+  checkGameOver() {
+    const crashed = this.enemies.some((enemy) => {
+      return this.player.crashWith(enemy);
+    });
+    this.stop();
   }
 }
 console.log("game JS is loaded");

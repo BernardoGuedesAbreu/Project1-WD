@@ -5,7 +5,7 @@ const startButton = document.getElementById("start");
 
 //creating our player
 
-const player = new Player(600, 300, 250, 250, ctx);
+const player = new Player(600, 300, 150, 150, ctx);
 const game = new Game(ctx, canvas, canvas.width, canvas.height, player);
 //start button on Click
 startButton.onclick = function () {
@@ -19,26 +19,26 @@ let lastKeyPress = "right";
 document.addEventListener("keydown", (e) => {
   switch (e.code) {
     case "ArrowUp":
-      player.speedY = -5;
+      player.speedY = -3;
       lastKeyPress = "up";
       break;
 
     case "ArrowDown":
-      player.speedY = 5;
+      player.speedY = 3;
       lastKeyPress = "down";
       break;
 
     case "ArrowLeft":
-      player.speedX = -5;
+      player.speedX = -3;
       lastKeyPress = "left";
       break;
 
     case "ArrowRight":
-      player.speedX = 5;
+      player.speedX = 3;
       lastKeyPress = "right";
       break;
 
-    case "Space":
+    case "KeyF":
       game.shoot();
       break;
   }

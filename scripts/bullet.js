@@ -12,13 +12,13 @@ class Bullet {
 
   direction() {
     if (this.bulletDirection === "right") {
-      this.x += 3;
+      this.x += 5;
     } else if (this.bulletDirection === "left") {
-      this.x -= 3;
+      this.x -= 5;
     } else if (this.bulletDirection === "up") {
-      this.y -= 3;
+      this.y -= 5;
     } else if (this.bulletDirection === "down") {
-      this.y += 3;
+      this.y += 5;
     }
   }
 

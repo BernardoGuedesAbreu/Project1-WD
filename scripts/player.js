@@ -7,6 +7,8 @@ class Player {
     this.ctx = ctx;
     this.img = new Image();
     this.img.src = "/img/player.png";
+    this.img2 = new Image();
+    this.img2.src = "img/playerMirrored.png";
     this.speedX = 0;
     this.speedY = 0;
   }
@@ -25,7 +27,13 @@ class Player {
   useAbility() {} //ability function
 
   draw() {
-    this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+    if (lastKeyPress === "right") {
+      this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+    } else if (lastKeyPress === "left") {
+      this.ctx.drawImage(this.img2, this.x, this.y, this.w, this.h);
+    } else {
+      this.ctx.drawImage(this.img2, this.x, this.y, this.w, this.h);
+    }
   }
 
   newPos() {
@@ -51,6 +59,15 @@ class Player {
 
   right() {
     return this.x + this.w;
+  }
+
+  crashWith(enemy) {
+    return !(
+      this.bottom() < enemy.top() ||
+      this.top() > enemy.bottom() ||
+      this.right() < enemy.left() ||
+      this.left() > enemy.right()
+    );
   }
 }
 
