@@ -6,25 +6,33 @@ class Player {
     this.h = h;
     this.ctx = ctx;
     this.img = new Image();
-    this.img.src = '/img/player.png'
+    this.img.src = "/img/player.png";
     this.speedX = 0;
     this.speedY = 0;
   }
 
-  attack() {} //attack function
+  /*shoot() {
+    if (player.shootPressedW) {
+    }
+    if (player.shootPressedA) {
+    }
+    if (player.shootPressedD) {
+    }
+    if (player.shootPressedS) {
+    }
+  } //attack function*/
 
   useAbility() {} //ability function
 
   draw() {
     this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-    }
+  }
 
   newPos() {
-
-    if(this.x <= 0)this.x = 1;
-    if(this.x >= canvas.width - this.w) this.x = canvas.width - this.w;
-    if(this.y <= 0)this.y = 1;
-    if(this.y >= canvas.height - this.h)this.y = canvas.height - this.h; 
+    if (this.x <= 0) this.x = 1;
+    if (this.x >= canvas.width - this.w) this.x = canvas.width - this.w;
+    if (this.y <= 0) this.y = 1;
+    if (this.y >= canvas.height - this.h) this.y = canvas.height - this.h;
     this.x += this.speedX;
     this.y += this.speedY;
   }
@@ -45,6 +53,5 @@ class Player {
     return this.x + this.w;
   }
 }
-
 
 console.log("player JS is loaded");

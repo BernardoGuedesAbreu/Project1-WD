@@ -31,11 +31,41 @@ document.addEventListener("keydown", (e) => {
     case "ArrowRight":
       player.speedX = 5;
       break;
+    
+    case "KeyW":
+      player.shootPressedW = true;
+      break;
+    case "KeyA":
+      player.shootPressedA = true;
+      break;
+    case "KeyD":
+      player.shootPressedD = true;
+      break;
+    case "KeyS":
+      player.shootPressedS = true;
+      break;
   }
 });
-document.addEventListener("keyup", () => {
+document.addEventListener("keyup", (e) => {
   player.speedX = 0;
   player.speedY = 0;
+  
+  switch (e.code) {
+  case "KeyW":
+    this.shootPressed = false;
+    break;
+  case "KeyA":
+    this.shootPressed = false;
+    break;
+  case "KeyD":
+    this.shootPressed = false;
+    break;
+  case "KeyS":
+    this.shootPressed = false;
+    break;
+  }
+
+
 });
 
 console.log("Index JS is loaded");

@@ -8,6 +8,7 @@ class Game {
     this.frames = 0; // empty enemies array
     this.intervalId = null;
     this.enemies = [];
+    this.bullets = [];
   }
 
   start() {
@@ -19,10 +20,13 @@ class Game {
     this.clear();
     this.player.newPos();
     this.player.draw();
+    this.shoot();
+    this.updateShoot();
     this.updateEnemies();
-    for(let i = 0; i < this.enemies.length; i++){ //for loop to update all enemies position in the array
-      this.enemies[i].newPos();         
-      } 
+    for (let i = 0; i < this.enemies.length; i++) {
+      //for loop to update all enemies position in the array
+      this.enemies[i].newPos();
+    }
   };
 
   //stops the game
@@ -34,11 +38,10 @@ class Game {
     this.ctx.clearRect(0, 0, this.width, this.height);
   }
 
-  
   updateEnemies() {
-
-    for(let i = 0; i < this.enemies.length; i++){
-      this.enemies[i].draw();  } 
+    for (let i = 0; i < this.enemies.length; i++) {
+      this.enemies[i].draw();
+    }
     //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
@@ -70,6 +73,27 @@ class Game {
           this.player
         )
       );
+    }
+  }
+
+  shoot() {
+    document.addEventListener("keydown", (e) => {
+      switch (e.code) {
+        case "Space":
+          let x = this.player.x + this.player.w;
+          let y = this.player.y + this.player.h / 2;  
+          const bullet = new Bullet(x, y, 100, 100, ctx);
+          console.log(bullet);
+          this.bullets.push(bullet);
+      }
+    });
+  }
+
+  updateShoot() {
+    for (let i = 0; i < this.bullets.length; i++) {
+      this.bullets[i].x += 3;
+      this.bullets[i].newPos();
+      this.bullets[i].draw();
     }
   }
 }
