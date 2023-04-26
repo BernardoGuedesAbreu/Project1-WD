@@ -116,7 +116,7 @@ class Boss {
   draw() {
     if (this.movLeft) this.dy = 0;
     else if (this.movRight) this.dy = 52;
-    this.ctx.drawImage(this.img, 0, 0, 400, 400, this.x, this.y, 150, 150);
+    this.ctx.drawImage(this.img, 0, 0, 400, 400, this.x, this.y, 250, 250);
   }
   
 

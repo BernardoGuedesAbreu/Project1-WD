@@ -12,15 +12,16 @@ class Game {
     this.score = 0;
     //background music
     this.soundtrack = new Audio("sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
-    this.soundtrack.loop = false;
+    this.soundtrack.loop = true;
     //sound effects
-    this.effects = new Audio("sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
+    this.effects = new Audio("sounds/marisa_laugh.mp3");
     this.effects.loop = false;
   }
 
   start() {
     this.intervalId = setInterval(this.update, 10);
     this.soundtrack.play();
+    this.soundtrack.volume = 0.5;
   }
 
   update = () => {
@@ -110,9 +111,9 @@ class Game {
         new Boss(
           randomArray[randomIndex].x,
           randomArray[randomIndex].y,
-          50,
-          50,
-          50,
+          200,
+          200,
+          1,
           this.ctx,
           spritesArray[randomSprite],
           this.shot,
@@ -120,6 +121,8 @@ class Game {
           this.player
         )
       );
+      this.effects.play();
+      this.effects.loop = true;
     }
 
     //Clearing Enemies and Boss
@@ -131,7 +134,7 @@ class Game {
               this.enemies[j].hp--;
             } else {
               this.enemies.splice(j, 1);
-              this.stop();
+              this.win();
             }
           } else {
             if (this.enemies[j].hp > 1) {
@@ -199,6 +202,16 @@ class Game {
       this.stop();
       this.soundtrack.pause();
       this.soundtrack.currentTime = 0;
+      this.effects.pause();
+      this.soundtrack.currentTime = 0;
     }
+  }
+
+  win() {
+    this.stop();
+    this.soundtrack.pause();
+    this.soundtrack.currentTime = 0;
+    this.effects.pause();
+    this.soundtrack.currentTime = 0;
   }
 }
