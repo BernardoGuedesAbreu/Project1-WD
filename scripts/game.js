@@ -46,12 +46,7 @@ class Game {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-    /*     const crashed = this.bullet.some((enemy) => {
-      return bullet.crashWithEnemy(enemy);
-     });
-     if(crashed){
-       this.enemies.splice(i,1)
-     }  */
+
 
     //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
@@ -79,12 +74,13 @@ class Game {
       //criação de enemies após x tempo
       const enemy = new Enemy( randomArray[randomIndex].x, randomArray[randomIndex].y, 30,30,5,this.ctx,spritesArray[randomSprite],this.shot,"Enemy",this.player
       );
-      console.log(enemy);
-      this.enemies.push(
-        enemy
-      );
+      this.enemies.push(enemy);
+    }
+    if (this.frames === 2000) {             // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
+        this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx,spritesArray[randomSprite], this.shot, 'Boss', this.player));
     }
 
+    //Clearing Enemies and Boss
     for (let i = 0; i < this.bullets.length; i++) {
       for (let j = 0; j < this.enemies.length; j++) {
         if (this.bullets[i].crashWith(this.enemies[j])) {
@@ -94,6 +90,8 @@ class Game {
       }
     }
   }
+    
+    
   updateScore(){
     this.score ++;
     ctx.fillStyle = "black";
