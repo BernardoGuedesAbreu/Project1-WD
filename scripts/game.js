@@ -1,3 +1,4 @@
+
 class Game {
   constructor(ctx, canvas, width, height, player) {
     this.ctx = ctx;
@@ -52,11 +53,14 @@ class Game {
     this.ctx.clearRect(0, 0, this.width, this.height);
   }
 
+  
+  
   updateEnemies() {
+    let enemiesSound = [new Audio("sounds/fatality.mp3"), new Audio("sounds/wizardHarry.mp3")]; // , new Audio("sounds/humiliation.mp3"), new Audio("sounds/headshot.mp3"), new Audio("sounds/father.mp3"), new Audio("sounds/scream.mp3"),new Audio("sounds/back.mp3")]
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-
+   
     //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
@@ -78,7 +82,7 @@ class Game {
       
     ];
 
-    let randomSprite = Math.floor(Math.random() * (spritesArray.length - 1));
+    let randomSprite = Math.floor(Math.random() * (spritesArray.length));
 
     if (this.frames % 200 === 0) {
       //criação de enemies após x tempo
@@ -96,14 +100,14 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 3000) {
+    if (this.frames === 1000) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
           randomArray[randomIndex].x,
           randomArray[randomIndex].y,
-          200,
-          200,
+          180,
+          180,
           1,
           this.ctx,
           spritesArray[randomSprite],
@@ -132,6 +136,8 @@ class Game {
               this.enemies[j].hp--;
             } else {
               this.enemies.splice(j, 1);
+              let soundIndex = Math.floor(Math.random() * enemiesSound.length);
+              enemiesSound[soundIndex].play();
             }
           }
 
