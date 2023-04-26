@@ -33,7 +33,7 @@ class Enemy {
     enemyImg.src = this.img;
     if (this.movLeft) this.dy = 0;
     else if (this.movRight) this.dy = 52;
-    this.ctx.drawImage(enemyImg, 0, 0, 150, 150, this.x, this.y, 70, 70);
+    this.ctx.drawImage(enemyImg, 0, 0, 150, 150, this.x, this.y, 100, 100);
   }
 
   newPos() {
@@ -72,16 +72,7 @@ class Enemy {
     return this.x + this.width;
   }
 
-  /* gotShot = () =>{
 
-     
-    return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
-     this.right() < this.shot.left() || this.left() > this.shot.right())  
-  */
-
-  /*receiveDamage() {
-    this.hp -= 1;
-  } */
 }
 
 class Boss {

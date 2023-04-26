@@ -5,7 +5,7 @@ const startButton = document.getElementById("start");
 
 //creating our player
 
-const player = new Player(600, 300, 150, 150, ctx);
+const player = new Player(600, 300, 120, 120, ctx);
 const game = new Game(ctx, canvas, canvas.width, canvas.height, player);
 //start button on Click
 startButton.onclick = function () {

@@ -69,22 +69,13 @@ class Game {
 
     let randomIndex = Math.floor(Math.random() * randomArray.length);
     let spritesArray = [
-      "img/Renato.png",
-      "img/Robson.png",
-      "img/Roshan.png",
-      "img/Pedro.png",
-      "img/Nuno.png",
-      "img/Margarida.png",
-      "img/Lucas.png",
-      "img/Joe.png",
-      "img/João C.png",
-      "img/Henrique.png",
-      "img/Gustavo.png",
-      "img/Guglielmo.png",
-      "img/Francisco .png",
-      "img/Erik.png",
-      "img/Elnaz.png",
-      "img/Chris.png",
+      "img/enemies1.png",
+      "img/enemies2.png",
+      "img/enemies3.png",
+      "img/enemies4.png",
+      "img/enemies5.png",
+      "img/enemies6.png",
+      
     ];
 
     let randomSprite = Math.floor(Math.random() * (spritesArray.length - 1));
@@ -94,8 +85,8 @@ class Game {
       const enemy = new Enemy(
         randomArray[randomIndex].x,
         randomArray[randomIndex].y,
-        30,
-        30,
+        100,
+        100,
         2,
         this.ctx,
         spritesArray[randomSprite],
@@ -105,7 +96,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 100) {
+    if (this.frames === 3000) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
