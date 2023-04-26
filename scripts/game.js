@@ -104,13 +104,13 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 3000) {
+    if (this.frames === 100) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
           randomArray[randomIndex].x,
           randomArray[randomIndex].y,
-          10,
+          50,
           50,
           50,
           this.ctx,

@@ -33,17 +33,7 @@ class Enemy {
     enemyImg.src = this.img;
     if (this.movLeft) this.dy = 0;
     else if (this.movRight) this.dy = 52;
-    this.ctx.drawImage(
-      enemyImg,
-      0,
-      0,
-      150,
-      150,
-      this.x,
-      this.y,
-      70,
-      70
-    );
+    this.ctx.drawImage(enemyImg, 0, 0, 150, 150, this.x, this.y, 70, 70);
   }
 
   newPos() {
@@ -57,7 +47,7 @@ class Enemy {
       this.movRight = true;
     }
 
-    if (player.y+75< this.y) this.y -= 1;
+    if (player.y + 75 < this.y) this.y -= 1;
     else this.y += 1;
 
     if (player.x == this.x) {
@@ -88,15 +78,13 @@ class Enemy {
     return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
      this.right() < this.shot.left() || this.left() > this.shot.right())  
   */
-     
-  
 
   /*receiveDamage() {
     this.hp -= 1;
   } */
 }
 
-class Boss{
+class Boss {
   constructor(x, y, width, height, hp, ctx, img, shot, enemyType, player) {
     this.x = x;
     this.y = y;
@@ -104,7 +92,8 @@ class Boss{
     this.height = height;
     this.hp = hp;
     this.ctx = ctx;
-    this.img = img;
+    this.img = new Image();
+    this.img.src = "img/BOSS.png";
     this.shot = shot;
     this.enemyType = enemyType;
     this.player = player;
@@ -125,22 +114,11 @@ class Boss{
   }
 
   draw() {
-    const enemyImg = new Image();
-    enemyImg.src = this.img;
     if (this.movLeft) this.dy = 0;
     else if (this.movRight) this.dy = 52;
-    this.ctx.drawImage(
-      enemyImg,
-      0,
-      0,
-      150,
-      150,
-      this.x,
-      this.y,
-      100,
-      100
-    );
+    this.ctx.drawImage(this.img, 0, 0, 400, 400, this.x, this.y, 150, 150);
   }
+  
 
   newPos() {
     if (player.x < this.x) {
@@ -153,7 +131,7 @@ class Boss{
       this.movRight = true;
     }
 
-    if (player.y+75< this.y) this.y -= 1;
+    if (player.y + 75 < this.y) this.y -= 1;
     else this.y += 1;
 
     if (player.x == this.x) {
@@ -177,6 +155,5 @@ class Boss{
   right() {
     return this.x + this.width;
   }
-
 }
 console.log("enemies JS is loaded");
