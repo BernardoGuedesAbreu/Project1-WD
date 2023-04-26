@@ -9,6 +9,7 @@ class Game {
     this.intervalId = null;
     this.enemies = [];
     this.bullets = [];
+    this.score = 0;
   }
 
   start() {
@@ -17,6 +18,7 @@ class Game {
 
   update = () => {
     this.frames++;
+    this.updateScore();
     this.clear();
     this.updateShoot();
     this.player.newPos();
@@ -99,6 +101,10 @@ class Game {
       }
     
     }
+
+  }
+  updateScore(){
+    this.score ++;
 
   }
 
