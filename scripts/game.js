@@ -46,16 +46,14 @@ class Game {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-/*     const crashed = this.bullet.some((enemy) => {
+    /*     const crashed = this.bullet.some((enemy) => {
       return bullet.crashWithEnemy(enemy);
      });
      if(crashed){
        this.enemies.splice(i,1)
      }  */
 
-
-
-       //spawn aleatório  de inimigos:
+    //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
     let randomArray = [
@@ -66,7 +64,15 @@ class Game {
     ];
 
     let randomIndex = Math.floor(Math.random() * randomArray.length);
-    let spritesArray = ["img/3.png", "img/4.jpg", "img/5.png"];
+    let spritesArray = [
+      "img/Renato.png",
+      "img/Robson.png",
+      "img/Roshan.png",
+      "img/Pedro.png",
+      "img/Nuno.png",
+      "img/Margarida.png",
+      "img/Lucas.png",
+    ];
     let randomSprite = Math.floor(Math.random() * (spritesArray.length - 1));
 
     if (this.frames % 300 === 0) {
@@ -88,20 +94,14 @@ class Game {
       );
     }
 
-
-    for (let i =0;i < this.bullets.length; i++) {
-
-      for (let j =0;j < this.enemies.length; j++) {
-      
-    if (this.bullets[i].crashWith(this.enemies[j])){
-      this.bullets.splice(i,1)
-      this.enemies.splice(j,1)
-    }
-    
+    for (let i = 0; i < this.bullets.length; i++) {
+      for (let j = 0; j < this.enemies.length; j++) {
+        if (this.bullets[i].crashWith(this.enemies[j])) {
+          this.bullets.splice(i, 1);
+          this.enemies.splice(j, 1);
+        }
       }
-    
     }
-
   }
   updateScore(){
     this.score ++;
@@ -123,6 +123,9 @@ class Game {
       this.bullets[i].draw();
 
       if (this.bullets[i].x > this.width) {
+        this.bullets.splice(i, 1);}
+         
+      else if (this.bullets[i].y > this.height) {
         this.bullets.splice(i, 1);
       }
     }
@@ -133,9 +136,15 @@ class Game {
       return this.player.crashWith(enemy);
     });
 
-    if(crashed){
-    this.stop();
+    if (crashed) {
+      this.stop();
+      ctx.fillStyle = "black";
+      ctx.fillRect(50, 100, 500, 300);
+      ctx.font = "32px Helvetica";
+      ctx.fillStyle = "red";
+      ctx.fillText("You NEED to trust the process!!", 75, 250);
+      ctx.fillStyle = "white";
+    }
   }
-}
 }
 console.log("game JS is loaded");
