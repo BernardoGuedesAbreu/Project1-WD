@@ -18,8 +18,8 @@ class Game {
 
   update = () => {
     this.frames++;
-    this.updateScore();
     this.clear();
+    this.updateScore();
     this.updateShoot();
     this.player.newPos();
     this.player.draw();
@@ -77,20 +77,11 @@ class Game {
 
     if (this.frames % 300 === 0) {
       //criação de enemies após x tempo
-
+      const enemy = new Enemy( randomArray[randomIndex].x, randomArray[randomIndex].y, 30,30,5,this.ctx,spritesArray[randomSprite],this.shot,"Enemy",this.player
+      );
+      console.log(enemy);
       this.enemies.push(
-        new Enemy(
-          randomArray[randomIndex].x,
-          randomArray[randomIndex].y,
-          30,
-          30,
-          5,
-          this.ctx,
-          spritesArray[randomSprite],
-          this.shot,
-          "Enemy",
-          this.player
-        )
+        enemy
       );
     }
 
@@ -105,6 +96,10 @@ class Game {
   }
   updateScore(){
     this.score ++;
+    ctx.fillStyle = "black";
+    ctx.font = "20px Helvetica"
+    ctx.fillText(`Score ${this.score}` ,80, 200)
+
 
   }
 
@@ -122,12 +117,10 @@ class Game {
       this.bullets[i].newPos();
       this.bullets[i].draw();
 
-      if (this.bullets[i].x > this.width) {
+      if (this.bullets[i].x > this.width  || this.bullets[i].y > this.height) {
         this.bullets.splice(i, 1);}
          
-      else if (this.bullets[i].y > this.height) {
-        this.bullets.splice(i, 1);
-      }
+      
     }
   }
 

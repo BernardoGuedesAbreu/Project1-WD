@@ -35,13 +35,13 @@ class Enemy {
     else if (this.movRight) this.dy = 52;
     this.ctx.drawImage(
       enemyImg,
-      this.dx,
-      this.dy,
-      this.width,
-      this.height,
+      0,
+      0,
+      150,
+      150,
       this.x,
       this.y,
-      50,
+      70,
       70
     );
   }
