@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   overflow-y: hidden;
@@ -10,10 +10,9 @@
   height: 100px;
 }
 
-#game-controls-info{
+#game-controls-info {
   color: aqua;
 }
-
 
 #BarraDeStart {
   display: flex;
@@ -24,28 +23,36 @@
 #scrolling-background {
   z-index: -50;
   position: absolute;
-  background:url(/img/scrolling-background.jpg)  repeat-x;  /*making the background infinite */
+  background: url(/img/scrolling-background.jpg) repeat-x; /*making the background infinite */
   height: 100vh;
-  width: 3840px;   /* give it enough width that the loop works */
-  animation: slide 30s linear infinite;   /*find a good loop interval that works well */
+  width: 3840px; /* give it enough width that the loop works */
+  animation: slide 30s linear infinite; /*find a good loop interval that works well */
 }
 @keyframes slide {
   0% {
-      transform: translate(0);    /* at moment zero of the animation process, do nothing */
-    }
-    100% {
-      transform: translate(-1920px);  /* at moment 100% of the animation process, move img to the left 2560px */
-    }
+    transform: translate(
+      0
+    ); /* at moment zero of the animation process, do nothing */
+  }
+  100% {
+    transform: translate(
+      -1920px
+    ); /* at moment 100% of the animation process, move img to the left 2560px */
+  }
 }
 
 #full-page-div {
   animation: fadeIn 2s;
-  z-index: 1; 
+  z-index: 1;
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #canvas {
@@ -65,14 +72,44 @@
   padding-right: 0px;
 }
 
-#title-div h1 { 
+#title-div h1 {
   color: aqua;
   padding-top: 8vh;
   margin-left: 1vw;
   margin-right: 1vw;
-  margin-bottom: 8vh;   
+  margin-bottom: 8vh;
   text-align: center;
   font-size: 4vw;
   display: flex;
   justify-content: center;
+}
+
+#game-over {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9998;
+}
+
+#game-over img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#game-over.game-over-show {
+  display: block;
+}
+
+#restart-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
 }

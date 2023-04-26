@@ -10,10 +10,17 @@ class Game {
     this.enemies = [];
     this.bullets = [];
     this.score = 0;
+    //background music
+    this.soundtrack = new Audio("sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
+    this.soundtrack.loop = false;
+    //sound effects
+    this.effects = new Audio("sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
+    this.effects.loop = false;
   }
 
   start() {
     this.intervalId = setInterval(this.update, 10);
+    this.soundtrack.play();
   }
 
   update = () => {
@@ -36,6 +43,8 @@ class Game {
   //stops the game
   stop() {
     clearInterval(this.intervalId);
+    document.getElementById("game-over").classList.add("game-over-show");
+    document.getElementById("restart-button").style.display = "block";
   }
 
   clear() {
@@ -170,6 +179,17 @@ class Game {
     }
   }
 
+  newGame() {
+    this.frames = 0;
+    this.score = 0;
+    this.enemies = [];
+    this.bullets = [];
+    this.start();
+
+    document.getElementById("game-over").classList.remove("game-over-show");
+    document.getElementById("restart-button").style.display = "none";
+  }
+
   checkGameOver() {
     const crashed = this.enemies.some((enemy) => {
       return this.player.crashWith(enemy);
@@ -177,13 +197,8 @@ class Game {
 
     if (crashed) {
       this.stop();
-
-      ctx.font = "100px Helvetica";
-      ctx.fillStyle = "rgb(230, 86, 179)";
-      ctx.fillText("You NEED to trust the process!!", 30, 500);
-      ctx.fillStyle = "white";
+      this.soundtrack.pause();
+      this.soundtrack.currentTime = 0;
     }
   }
 }
-
-console.log("game JS is loaded");

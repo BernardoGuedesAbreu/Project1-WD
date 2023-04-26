@@ -50,3 +50,9 @@ document.addEventListener("keyup", (e) => {
 });
 
 console.log("Index JS is loaded");
+
+document.getElementById("restart-button").onclick = function () {
+  console.log("starting");
+
+  game.newGame();
+};
