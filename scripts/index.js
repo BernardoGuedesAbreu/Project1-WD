@@ -19,12 +19,12 @@ let lastKeyPress = "right";
 document.addEventListener("keydown", (e) => {
   switch (e.code) {
     case "ArrowUp":
-      player.speedY = -3;
+      player.speedY = -5;
       lastKeyPress = "up";
       break;
 
     case "ArrowDown":
-      player.speedY = 3;
+      player.speedY = 5;
       lastKeyPress = "down";
       break;
 

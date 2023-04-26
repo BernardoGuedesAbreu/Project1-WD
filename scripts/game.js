@@ -70,26 +70,49 @@ class Game {
     ];
     let randomSprite = Math.floor(Math.random() * (spritesArray.length - 1));
 
-    if (this.frames % 300 === 0) {
+    if (this.frames % 200 === 0) {
       //criação de enemies após x tempo
-      const enemy = new Enemy( randomArray[randomIndex].x, randomArray[randomIndex].y, 30,30,5,this.ctx,spritesArray[randomSprite],this.shot,"Enemy",this.player
+      const enemy = new Enemy( randomArray[randomIndex].x, randomArray[randomIndex].y, 30,30,2,this.ctx,spritesArray[randomSprite],this.shot,"Enemy",this.player
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 2000) {             // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
-        this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 100, 80, this.ctx,spritesArray[randomSprite], this.shot, 'Boss', this.player));
+    if (this.frames === 5000) {             // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
+        this.enemies.push(new Boss(randomArray[randomIndex].x, randomArray[randomIndex].y, 10, 50, 50, this.ctx,spritesArray[randomSprite], this.shot, 'Boss', this.player));
     }
 
     //Clearing Enemies and Boss
     for (let i = 0; i < this.bullets.length; i++) {
       for (let j = 0; j < this.enemies.length; j++) {
         if (this.bullets[i].crashWith(this.enemies[j])) {
+
+          if (this.enemies[j].enemyType === "Boss"){
+
+            if (this.enemies[j].hp > 1) {
+              this.enemies[j].hp--;
+            } else {
+              this.enemies.splice(j, 1);
+              this.stop()
+            }
+          }else{
+            if (this.enemies[j].hp > 1) {
+              this.enemies[j].hp--;
+            } else {
+              this.enemies.splice(j, 1);
+            }
+          }
+
+
+
           this.bullets.splice(i, 1);
-          this.enemies.splice(j, 1);
         }
       }
     }
-  }
+
+    }
+    
+  
+  
+
     
     
   updateScore(){
@@ -115,7 +138,7 @@ class Game {
       this.bullets[i].newPos();
       this.bullets[i].draw();
 
-      if (this.bullets[i].x > this.width  || this.bullets[i].y > this.height) {
+      if (this.bullets[i].x > this.width  || this.bullets[i].x < 0 || this.bullets[i].y > this.height || this.bullets[i].y <0) {
         this.bullets.splice(i, 1);}
          
       
@@ -138,4 +161,6 @@ class Game {
     }
   }
 }
+
+
 console.log("game JS is loaded");

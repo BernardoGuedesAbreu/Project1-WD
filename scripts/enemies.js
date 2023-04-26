@@ -87,16 +87,12 @@ class Enemy {
      
     return !(this.bottom() < this.shot.top() || this.top() > this.shot.bottom() || 
      this.right() < this.shot.left() || this.left() > this.shot.right())  
-  
+  */
      
-  }
-/*
-  receiveDamage() {
-    /* if(this.shot.shotFired)this.hp -= 5;
-      this.shot.shotFired = false;
-      console.log(this.hp) 
-    this.hp -= 5;
-    //console.log(this.hp)
+  
+
+  /*receiveDamage() {
+    this.hp -= 1;
   } */
 }
 
@@ -141,8 +137,8 @@ class Boss{
       150,
       this.x,
       this.y,
-      500,
-      500
+      100,
+      100
     );
   }
 
