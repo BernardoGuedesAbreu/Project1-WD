@@ -10,6 +10,9 @@
   height: 100px;
 }
 
+#game-controls-info{
+  color: aqua;
+}
 
 
 #BarraDeStart {
@@ -46,12 +49,12 @@
 }
 
 #canvas {
-  
+  border-style: dotted;
   border-radius: 50px;
   margin-right: 80px !important;
-  border-color: antiquewhite;
+  border-color: rgb(230, 86, 179);
   background-image: url(/img/background-canvas.jpg);
-  background-size:auto;
+  background-size: contain;
 }
 
 #middle-section {
@@ -63,6 +66,7 @@
 }
 
 #title-div h1 { 
+  color: aqua;
   padding-top: 8vh;
   margin-left: 1vw;
   margin-right: 1vw;

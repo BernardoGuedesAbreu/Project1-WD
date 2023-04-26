@@ -95,7 +95,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 5000) {
+    if (this.frames === 3000) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
@@ -177,11 +177,10 @@ class Game {
 
     if (crashed) {
       this.stop();
-      ctx.fillStyle = "grey";
-      ctx.fillRect(50, 100, 800, 500);
-      ctx.font = "50px Helvetica";
-      ctx.fillStyle = "blue";
-      ctx.fillText("You NEED to trust the process!!", 100, 350);
+
+      ctx.font = "100px Helvetica";
+      ctx.fillStyle = "rgb(230, 86, 179)";
+      ctx.fillText("You NEED to trust the process!!", 30, 500);
       ctx.fillStyle = "white";
     }
   }
