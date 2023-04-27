@@ -71,8 +71,6 @@ class Enemy {
   right() {
     return this.x + this.width;
   }
-
-
 }
 
 class Boss {
@@ -84,7 +82,7 @@ class Boss {
     this.hp = hp;
     this.ctx = ctx;
     this.img = new Image();
-    this.img.src = "img/BOSS.png";
+    this.img.src = "docs/assets/img/BOSS.png";
     this.shot = shot;
     this.enemyType = enemyType;
     this.player = player;
@@ -109,7 +107,6 @@ class Boss {
     else if (this.movRight) this.dy = 52;
     this.ctx.drawImage(this.img, 0, 0, 400, 400, this.x, this.y, 250, 250);
   }
-  
 
   newPos() {
     if (player.x < this.x) {

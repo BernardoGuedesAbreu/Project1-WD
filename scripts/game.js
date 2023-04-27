@@ -11,14 +11,14 @@ class Game {
     this.bullets = [];
     this.score = 0;
     //background music
-    this.soundtrack = new Audio("sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
+    this.soundtrack = new Audio("docs/assets/sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
     this.soundtrack.loop = true;
     //sound effects
-    this.effects = new Audio("sounds/marisa_laugh.mp3");
+    this.effects = new Audio("docs/assets/sounds/marisa_laugh.mp3");
     this.effects.loop = false;
     this.enemiesSound = [];
     this.bulletsImg = [];
-    this.gameOverSound = new Audio("sounds/gameoversound.mp3");
+    this.gameOverSound = new Audio("docs/assets/sounds/gameoversound.mp3");
   }
 
   start() {
@@ -26,13 +26,13 @@ class Game {
     this.soundtrack.play();
     this.soundtrack.volume = 0.3;
 
-    let enemiesSound1 = new Audio("sounds/fatality.mp3");
-    let enemiesSound2 = new Audio("sounds/wizardHarry.mp3");
-    let enemiesSound3 = new Audio("sounds/humiliation.mp3");
-    let enemiesSound4 = new Audio("sounds/headshot.mp3");
-    let enemiesSound5 = new Audio("sounds/father.mp3");
-    let enemiesSound6 = new Audio("sounds/scream.mp3");
-    let enemiesSound7 = new Audio("sounds/back.mp3");
+    let enemiesSound1 = new Audio("docs/assets/sounds/fatality.mp3");
+    let enemiesSound2 = new Audio("docs/assets/sounds/wizardHarry.mp3");
+    let enemiesSound3 = new Audio("docs/assets/sounds/humiliation.mp3");
+    let enemiesSound4 = new Audio("docs/assets/sounds/headshot.mp3");
+    let enemiesSound5 = new Audio("docs/assets/sounds/father.mp3");
+    let enemiesSound6 = new Audio("docs/assets/sounds/scream.mp3");
+    let enemiesSound7 = new Audio("docs/assets/sounds/back.mp3");
     this.enemiesSound.push(
       enemiesSound1,
       enemiesSound2,
@@ -89,13 +89,13 @@ class Game {
 
     let randomIndex = Math.floor(Math.random() * randomArray.length);
     let spritesArray = [
-      "img/enemies1.png",
-      "img/enemies2.png",
-      "img/enemies3.png",
-      "img/enemies4.png",
-      "img/enemies5.png",
-      "img/enemies6.png",
-      "img/enemies7.png",
+      "docs/assets/img/enemies1.png",
+      "docs/assets/img/enemies2.png",
+      "docs/assets/img/enemies3.png",
+      "docs/assets/img/enemies4.png",
+      "docs/assets/img/enemies5.png",
+      "docs/assets/img/enemies6.png",
+      "docs/assets/img/enemies7.png",
     ];
 
     let randomSprite = Math.floor(Math.random() * spritesArray.length);
@@ -175,9 +175,9 @@ class Game {
   shoot() {
     if (this.bullets.length === 0) {
       let player2 = new Image();
-      player2.src = "img/player2.png";
+      player2.src = "docs/assets/img/player2.png";
       let player3 = new Image();
-      player3.src = "img/player3.png";
+      player3.src = "docs/assets/img/player3.png";
       this.bulletsImg.push(player2, player3);
     }
     let x = this.player.x + this.player.w / 2;

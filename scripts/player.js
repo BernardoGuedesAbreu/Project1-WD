@@ -6,9 +6,9 @@ class Player {
     this.h = h;
     this.ctx = ctx;
     this.img = new Image();
-    this.img.src = "/img/player.png";
+    this.img.src = "docs/assets/img/player.png";
     this.img2 = new Image();
-    this.img2.src = "img/playerMirrored.png";
+    this.img2.src = "docs/assets/img/playerMirrored.png";
     this.speedX = 0;
     this.speedY = 0;
   }
