@@ -18,6 +18,7 @@ class Game {
     this.effects.loop = false;
     this.enemiesSound = [];
     this.bulletsImg = [];
+    this.gameOverSound = new Audio("sounds/gameoversound.mp3");
   }
 
   start() {
@@ -32,8 +33,15 @@ class Game {
     let enemiesSound5 = new Audio("sounds/father.mp3");
     let enemiesSound6 = new Audio("sounds/scream.mp3");
     let enemiesSound7 = new Audio("sounds/back.mp3");
-    this.enemiesSound.push(enemiesSound1, enemiesSound2,enemiesSound3, enemiesSound4, 
-      enemiesSound5, enemiesSound6, enemiesSound7);
+    this.enemiesSound.push(
+      enemiesSound1,
+      enemiesSound2,
+      enemiesSound3,
+      enemiesSound4,
+      enemiesSound5,
+      enemiesSound6,
+      enemiesSound7
+    );
 
     console.log(this.enemiesSound);
   }
@@ -108,7 +116,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 3017) {
+    if (this.frames === 3517) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
@@ -116,7 +124,7 @@ class Game {
           randomArray[randomIndex].y,
           180,
           180,
-          1,
+          30,
           this.ctx,
           spritesArray[randomSprite],
           this.shot,
@@ -165,17 +173,25 @@ class Game {
   }
 
   shoot() {
-    if(this.bullets.length === 0){
-    let player2 = new Image();
-    player2.src = "img/player2.png";
-    let player3 = new Image();
-    player3.src = "img/player3.png";
-    this.bulletsImg.push(player2, player3);
-    } 
+    if (this.bullets.length === 0) {
+      let player2 = new Image();
+      player2.src = "img/player2.png";
+      let player3 = new Image();
+      player3.src = "img/player3.png";
+      this.bulletsImg.push(player2, player3);
+    }
     let x = this.player.x + this.player.w / 2;
     let y = this.player.y + this.player.h / 2;
     let imageIndex = Math.floor(Math.random() * this.bulletsImg.length);
-    const bullet = new Bullet(x, y, 50, 50, ctx, lastKeyPress, this.bulletsImg[imageIndex] );
+    const bullet = new Bullet(
+      x,
+      y,
+      50,
+      50,
+      ctx,
+      lastKeyPress,
+      this.bulletsImg[imageIndex]
+    );
     console.log(bullet);
     this.bullets.push(bullet);
   }
@@ -203,6 +219,8 @@ class Game {
     this.enemies = [];
     this.bullets = [];
     this.start();
+    player.x = 600;
+    player.y = 300;
 
     document.getElementById("game-over").classList.remove("game-over-show");
     document.getElementById("win").classList.remove("win-show");
@@ -221,6 +239,7 @@ class Game {
       this.soundtrack.currentTime = 0;
       this.effects.pause();
       this.effects.currentTime = 0;
+      this.gameOverSound.play();
     }
   }
 
@@ -233,6 +252,5 @@ class Game {
     clearInterval(this.intervalId);
     document.getElementById("win").classList.add("win-show");
     document.getElementById("restart-button2").style.display = "block";
-    
   }
 }
