@@ -1,4 +1,3 @@
-
 class Game {
   constructor(ctx, canvas, width, height, player) {
     this.ctx = ctx;
@@ -17,12 +16,21 @@ class Game {
     //sound effects
     this.effects = new Audio("sounds/marisa_laugh.mp3");
     this.effects.loop = false;
+    this.enemiesSound = [];
   }
 
   start() {
     this.intervalId = setInterval(this.update, 10);
     this.soundtrack.play();
     this.soundtrack.volume = 0.5;
+
+    let enemiesSound1 = new Audio("sounds/fatality.mp3");
+    let enemiesSound2 = new Audio("sounds/wizardHarry.mp3");
+    // , new Audio("sounds/humiliation.mp3"), new Audio("sounds/headshot.mp3"),
+    //new Audio("sounds/father.mp3"), new Audio("sounds/scream.mp3"),new Audio("sounds/back.mp3")]
+    this.enemiesSound.push(enemiesSound1, enemiesSound2);
+
+    console.log(this.enemiesSound);
   }
 
   update = () => {
@@ -38,8 +46,6 @@ class Game {
       this.enemies[i].newPos();
     }
     this.checkGameOver();
-    console.log(this.bullets.length);
-    console.log(this.enemies.length);
   };
 
   //stops the game
@@ -53,14 +59,11 @@ class Game {
     this.ctx.clearRect(0, 0, this.width, this.height);
   }
 
-  
-  
   updateEnemies() {
-    let enemiesSound = [new Audio("sounds/fatality.mp3"), new Audio("sounds/wizardHarry.mp3")]; // , new Audio("sounds/humiliation.mp3"), new Audio("sounds/headshot.mp3"), new Audio("sounds/father.mp3"), new Audio("sounds/scream.mp3"),new Audio("sounds/back.mp3")]
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-   
+
     //spawn aleatório  de inimigos:
     let randomX = Math.floor(Math.random() * this.canvas.width);
     let randomY = Math.floor(Math.random() * this.canvas.height);
@@ -79,10 +82,10 @@ class Game {
       "img/enemies4.png",
       "img/enemies5.png",
       "img/enemies6.png",
-      
+      "img/enemies7.png",
     ];
 
-    let randomSprite = Math.floor(Math.random() * (spritesArray.length));
+    let randomSprite = Math.floor(Math.random() * spritesArray.length);
 
     if (this.frames % 200 === 0) {
       //criação de enemies após x tempo
@@ -100,7 +103,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 1000) {
+    if (this.frames === 17) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
@@ -136,8 +139,10 @@ class Game {
               this.enemies[j].hp--;
             } else {
               this.enemies.splice(j, 1);
-              let soundIndex = Math.floor(Math.random() * enemiesSound.length);
-              enemiesSound[soundIndex].play();
+              let soundIndex = Math.floor(
+                Math.random() * this.enemiesSound.length
+              );
+              this.enemiesSound[soundIndex].play();
             }
           }
 
@@ -187,7 +192,9 @@ class Game {
     this.start();
 
     document.getElementById("game-over").classList.remove("game-over-show");
+    document.getElementById("win").classList.remove("win-show");
     document.getElementById("restart-button").style.display = "none";
+    document.getElementById("restart-button2").style.display = "none";
   }
 
   checkGameOver() {
@@ -200,15 +207,19 @@ class Game {
       this.soundtrack.pause();
       this.soundtrack.currentTime = 0;
       this.effects.pause();
-      this.soundtrack.currentTime = 0;
+      this.effects.currentTime = 0;
     }
   }
 
   win() {
-    this.stop();
     this.soundtrack.pause();
     this.soundtrack.currentTime = 0;
     this.effects.pause();
     this.soundtrack.currentTime = 0;
+
+    clearInterval(this.intervalId);
+    document.getElementById("win").classList.add("win-show");
+    document.getElementById("restart-button2").style.display = "block";
+    
   }
 }

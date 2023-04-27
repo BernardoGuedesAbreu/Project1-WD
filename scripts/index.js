@@ -56,3 +56,9 @@ document.getElementById("restart-button").onclick = function () {
 
   game.newGame();
 };
+
+document.getElementById("restart-button2").onclick = function () {
+  console.log("restarting");
+
+  game.newGame();
+};
