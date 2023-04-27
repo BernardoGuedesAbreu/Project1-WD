@@ -23,7 +23,7 @@
 #scrolling-background {
   z-index: -50;
   position: absolute;
-  background: url("docs/assets/img/scrolling-background.jpg") repeat-x; /*making the background infinite */
+  background: url(/docs/assets/img/scrolling-background.jpg) repeat-x; /*making the background infinite */
   height: 100vh;
   width: 3840px; /* give it enough width that the loop works */
   animation: slide 30s linear infinite; /*find a good loop interval that works well */
@@ -60,7 +60,7 @@
   border-radius: 50px;
   margin-right: 80px !important;
   border-color: rgb(230, 86, 179);
-  background-image: url("docs/assets/img/background-canvas.jpg");
+  background-image: url(/docs/assets/img/canvas_background.jpg);
   background-size: contain;
 }
 
