@@ -10,8 +10,21 @@
   height: 100px;
 }
 
-#game-controls-info {
+#Instructions{
+
+}
+
+h3{text-align: center;
+  font-family: 'VT323', monospace;
   color: aqua;
+  text-shadow: 5px 5px 15px aqua;
+  
+}
+
+#game-controls-info {
+  color: white;
+  text-align: center;
+  font-family: 'VT323', monospace;
 }
 
 #BarraDeStart {
@@ -73,15 +86,18 @@
 }
 
 #title-div h1 {
-  color: aqua;
   padding-top: 8vh;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  margin-bottom: 8vh;
-  text-align: center;
-  font-size: 4vw;
-  display: flex;
-  justify-content: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 8vh;
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 5vw;
+    transform: skewX(10deg);
+    color:aliceblue     ;
+    text-shadow: 5px 5px 15px aqua;
+    display: flex;
+    justify-content: center;
 }
 
 #game-over {
@@ -139,6 +155,7 @@
     font-family: 'VT323', monospace;
     font-weight: bold;
     transform: translate(130%, 1300%);
+    border-radius: 20px;
 
   /* position: absolute;
   top: 70%;
