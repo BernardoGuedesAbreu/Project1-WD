@@ -21,6 +21,7 @@ class Game {
     this.enemiesSound = [];
     this.bulletsImg = [];
     this.gameOverSound = new Audio("docs/assets/sounds/gameoversound.mp3");
+    this.winSound = new Audio("docs/assets/sounds/winSound.mp3")
   }
 
   start() {
@@ -254,5 +255,6 @@ class Game {
     clearInterval(this.intervalId);
     document.getElementById("win").classList.add("win-show");
     document.getElementById("restart-button2").style.display = "block";
+    this.winSound.play()
   }
 }
