@@ -11,7 +11,9 @@ class Game {
     this.bullets = [];
     this.score = 0;
     //background music
-    this.soundtrack = new Audio("docs/assets/sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3");
+    this.soundtrack = new Audio(
+      "docs/assets/sounds/Cuphead_OST_-_Botanic_Panic_Music.mp3"
+    );
     this.soundtrack.loop = true;
     //sound effects
     this.effects = new Audio("docs/assets/sounds/marisa_laugh.mp3");
@@ -116,7 +118,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 17) {
+    if (this.frames === 3017) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
@@ -124,7 +126,7 @@ class Game {
           randomArray[randomIndex].y,
           180,
           180,
-          10,
+          25,
           this.ctx,
           spritesArray[randomSprite],
           this.shot,
