@@ -36,7 +36,7 @@
   }
   100% {
     transform: translate(
-      -1920px
+      -100vw
     ); /* at moment 100% of the animation process, move img to the left 2560px */
   }
 }
@@ -130,7 +130,7 @@
 
 #restart-button {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
