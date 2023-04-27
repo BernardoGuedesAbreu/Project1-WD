@@ -139,8 +139,8 @@
 #restart-button2 {
   font-size: larger;
   position: absolute;
-  top: 20%;
-  right: 10%;
+  top: 70%;
+  right: 50%;
   transform: translate(-50%, -50%);
   display: none;
 }
