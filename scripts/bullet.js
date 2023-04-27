@@ -1,13 +1,14 @@
 class Bullet {
-  constructor(x, y, w, h, ctx, lastKeyPress) {
+  constructor(x, y, w, h, ctx, lastKeyPress, bulletImage) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.ctx = ctx;
-    this.img = new Image();
-    this.img.src = "/img/player2.png";
+    this.img = []
     this.bulletDirection = lastKeyPress;
+    this.bulletImage = bulletImage;
+    
   }
 
   direction() {
@@ -23,7 +24,7 @@ class Bullet {
   }
 
   draw() {
-    this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+    this.ctx.drawImage(this.bulletImage, this.x, this.y, this.w, this.h);
   }
 
   newPos() {
@@ -50,7 +51,7 @@ class Bullet {
   crashWith(enemy) {
     return !(
       this.bottom() < enemy.top() ||
-      this.top() > enemy.bottom() || 
+      this.top() > enemy.bottom() ||
       this.right() < enemy.left() ||
       this.left() > enemy.right()
     );

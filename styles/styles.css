@@ -137,9 +137,10 @@
 }
 
 #restart-button2 {
+  font-size: larger;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 20%;
+  right: 10%;
   transform: translate(-50%, -50%);
   display: none;
 }

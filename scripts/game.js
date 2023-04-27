@@ -17,18 +17,23 @@ class Game {
     this.effects = new Audio("sounds/marisa_laugh.mp3");
     this.effects.loop = false;
     this.enemiesSound = [];
+    this.bulletsImg = [];
   }
 
   start() {
     this.intervalId = setInterval(this.update, 10);
     this.soundtrack.play();
-    this.soundtrack.volume = 0.5;
+    this.soundtrack.volume = 0.3;
 
     let enemiesSound1 = new Audio("sounds/fatality.mp3");
     let enemiesSound2 = new Audio("sounds/wizardHarry.mp3");
-    // , new Audio("sounds/humiliation.mp3"), new Audio("sounds/headshot.mp3"),
-    //new Audio("sounds/father.mp3"), new Audio("sounds/scream.mp3"),new Audio("sounds/back.mp3")]
-    this.enemiesSound.push(enemiesSound1, enemiesSound2);
+    let enemiesSound3 = new Audio("sounds/humiliation.mp3");
+    let enemiesSound4 = new Audio("sounds/headshot.mp3");
+    let enemiesSound5 = new Audio("sounds/father.mp3");
+    let enemiesSound6 = new Audio("sounds/scream.mp3");
+    let enemiesSound7 = new Audio("sounds/back.mp3");
+    this.enemiesSound.push(enemiesSound1, enemiesSound2,enemiesSound3, enemiesSound4, 
+      enemiesSound5, enemiesSound6, enemiesSound7);
 
     console.log(this.enemiesSound);
   }
@@ -103,7 +108,7 @@ class Game {
       );
       this.enemies.push(enemy);
     }
-    if (this.frames === 17) {
+    if (this.frames === 3017) {
       // Boss creation ( (x, y, width, height, hp, ctx, img, shot, enemyType, player))
       this.enemies.push(
         new Boss(
@@ -160,9 +165,17 @@ class Game {
   }
 
   shoot() {
+    if(this.bullets.length === 0){
+    let player2 = new Image();
+    player2.src = "img/player2.png";
+    let player3 = new Image();
+    player3.src = "img/player3.png";
+    this.bulletsImg.push(player2, player3);
+    } 
     let x = this.player.x + this.player.w / 2;
     let y = this.player.y + this.player.h / 2;
-    const bullet = new Bullet(x, y, 50, 50, ctx, lastKeyPress);
+    let imageIndex = Math.floor(Math.random() * this.bulletsImg.length);
+    const bullet = new Bullet(x, y, 50, 50, ctx, lastKeyPress, this.bulletsImg[imageIndex] );
     console.log(bullet);
     this.bullets.push(bullet);
   }
